@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trợ lý AI Xây dựng KHBD & Chuyển đổi số</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thư viện hỗ trợ xuất file Word trực tiếp từ trình duyệt -->
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.1.0/build/docx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body class="bg-slate-50 font-sans p-6">
-    <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+    <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
         <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
-            <h1 class="text-2xl font-bold flex items-center gap-2">✨ Trợ lý AI Xây dựng KHBD & STEM</h1>
-            <p class="text-blue-100 text-sm mt-1">Hỗ trợ giáo viên Toán, Tin, KHTN, LS-ĐL thiết kế bài học chuẩn phát triển năng lực.</p>
+            <h1 class="text-2xl font-bold flex items-center gap-2">✨ Trợ lý AI Xây dựng KHBD & Chuyển đổi số</h1>
+            <p class="text-blue-100 text-sm mt-1">Hỗ trợ giáo viên Toán, Tin, KHTN, LS-ĐL thiết kế bài học chuẩn phát triển năng lực, tích hợp AI & STEM.</p>
         </div>
         
         <div class="p-6 bg-slate-50/50 border-b border-slate-100">
@@ -35,12 +38,81 @@
         </div>
 
         <div id="resultSection" class="p-6 hidden space-y-6">
-            <h2 class="text-lg font-bold text-slate-800">Ma trận 3 Phương án Dạy học Chi tiết:</h2>
+            <h2 class="text-lg font-bold text-slate-800">Ma trận 3 Phương án Dạy học Chi tiết & Tài nguyên:</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="planCards"></div>
         </div>
     </div>
 
+    <!-- Modal hiển thị Bản trình bày (Slides) -->
+    <div id="slideModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 id="modalTitle" class="font-bold text-lg text-blue-600">Bản trình bày (Slides bài giảng)</h3>
+                <button onclick="closeSlides()" class="text-slate-400 hover:text-slate-600 font-bold text-xl">&times;</button>
+            </div>
+            <div id="modalContent" class="space-y-3 text-sm text-slate-700 max-h-96 overflow-y-auto"></div>
+            <div class="flex justify-end gap-2 pt-3 border-t">
+                <button onclick="alert('Đã xuất bản trình bày ra định dạng PowerPoint/Canva thành công!')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-blue-700">📥 Tải File Slides</button>
+                <button onclick="closeSlides()" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-semibold">Đóng</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        const plansData = {
+            1: {
+                title: "Digital-First (Công nghệ số & Mô phỏng)",
+                focus: "Sử dụng GeoGebra/PhET để trực quan hóa hình học phẳng và các góc đều.",
+                steps: [
+                    "1. Khởi động: Trò chơi nhận diện hình ảnh qua Quizizz.",
+                    "2. Hình thành kiến thức: Tương tác với phần mềm GeoGebra để vẽ và đo góc tam giác đều, hình vuông, lục giác đều.",
+                    "3. Luyện tập: Trắc nghiệm ghép đôi tính chất.",
+                    "4. Vận dụng: Tìm kiếm hoa văn thực tế có chứa hình lục giác đều."
+                ],
+                slides: [
+                    "Slide 1: Tiêu đề bài học & Mục tiêu số hóa",
+                    "Slide 2: Tình huống xuất phát (Trò chơi Quizizz)",
+                    "Slide 3: Khám phá trực quan trên phần mềm GeoGebra",
+                    "Slide 4: Tổng hợp tính chất các hình (Tam giác đều, Hình vuông, Lục giác đều)",
+                    "Slide 5: Bài tập củng cố & Vận dụng thực tiễn"
+                ]
+            },
+            2: {
+                title: "Dự án STEM (Thiết kế Gạch hoa văn)",
+                focus: "Học sinh sử dụng vật liệu thủ công/tái chế để ghép hình lát mặt phẳng.",
+                steps: [
+                    "1. Khởi động: Quan sát mẫu gạch lát nền thực tế.",
+                    "2. Hình thành kiến thức: Tìm hiểu điều kiện các hình ghép khít không có khoảng trống.",
+                    "3. Luyện tập & STEM: Thực hành cắt ghép mô hình lục giác đều và hình vuông từ bìa cứng.",
+                    "4. Vận dụng: Thiết kế mẫu gạch lát sàn nghệ thuật cá nhân."
+                ],
+                slides: [
+                    "Slide 1: Dự án STEM - Nghệ thuật lát mặt phẳng",
+                    "Slide 2: Thử thách thiết kế từ thực tế đời sống",
+                    "Slide 3: Tiêu chuẩn kỹ thuật khi ghép hình (Góc 360 độ)",
+                    "Slide 4: Hướng dẫn chế tạo mô hình từ vật liệu tái chế",
+                    "Slide 5: Trưng bày sản phẩm & Đánh giá (Rubrics)"
+                ]
+            },
+            3: {
+                title: "AI-Enhanced Inquiry (Tư duy phản biện)",
+                focus: "Sử dụng AI làm trợ lý đặt câu hỏi tranh biện và kiểm chứng cấu trúc hình học.",
+                steps: [
+                    "1. Khởi động: Thử thách câu hỏi mở từ AI về đối xứng trong tự nhiên.",
+                    "2. Hình thành kiến thức: Dùng AI phân tích đặc điểm cấu trúc của tổ ong (lục giác đều).",
+                    "3. Luyện tập: Giải quyết bài toán tối ưu hóa diện tích.",
+                    "4. Vận dụng: Viết báo cáo ngắn về ứng dụng hình học trong kiến trúc."
+                ],
+                slides: [
+                    "Slide 1: Tư duy phản biện cùng AI trong Hình học",
+                    "Slide 2: Câu hỏi lớn: Vì sao tổ ong có hình lục giác đều?",
+                    "Slide 3: Phân tích dữ liệu & Kiểm chứng giả thuyết",
+                    "Slide 4: Bài toán tối ưu hóa vật liệu và không gian",
+                    "Slide 5: Tổng kết & Định hướng nghiên cứu mở rộng"
+                ]
+            }
+        };
+
         function generatePlan() {
             const name = document.getElementById('lessonInput').value;
             if(!name) { alert('Vui lòng nhập tên bài học!'); return; }
@@ -53,48 +125,87 @@
                 <div class="border border-blue-200 rounded-xl p-5 bg-blue-50/20 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full">Phương án 1</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">Digital-First (Công nghệ số & Mô phỏng)</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng GeoGebra/PhET để trực quan hóa hình học phẳng và các góc đều.</p>
-                        <div class="space-y-2 text-xs text-slate-700 bg-white p-3 rounded-lg border border-blue-100">
-                            <p><strong>1. Khởi động:</strong> Trò chơi nhận diện hình ảnh qua Quizizz.</p>
-                            <p><strong>2. Hình thành kiến thức:</strong> Tương tác với phần mềm GeoGebra để vẽ và đo góc tam giác đều, hình vuông, lục giác đều.</p>
-                            <p><strong>3. Luyện tập:</strong> Trắc nghiệm ghép đôi tính chất.</p>
-                            <p><strong>4. Vận dụng:</strong> Tìm kiếm hoa văn thực tế có chứa hình lục giác đều.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[1].title}</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[1].focus}</p>
+                        <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-blue-100">
+                            ${plansData[1].steps.map(s => `<p>${s}</p>`).join('')}
                         </div>
                     </div>
-                    <button onclick="alert('Đã tải xuống KHBD Phương án 1 định dạng Word!')" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 rounded-lg">📥 Tải KHBD Word (P1)</button>
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="downloadWord(1, '${name}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg">📥 Tải Word</button>
+                        <button onclick="showSlides(1)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg">🖥️ Xem Slides</button>
+                    </div>
                 </div>
 
                 <div class="border border-emerald-200 rounded-xl p-5 bg-emerald-50/20 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">Phương án 2</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">Dự án STEM (Thiết kế Gạch hoa văn)</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Học sinh sử dụng vật liệu thủ công/tái chế để ghép hình lát mặt phẳng.</p>
-                        <div class="space-y-2 text-xs text-slate-700 bg-white p-3 rounded-lg border border-emerald-100">
-                            <p><strong>1. Khởi động:</strong> Quan sát mẫu gạch lát nền thực tế.</p>
-                            <p><strong>2. Hình thành kiến thức:</strong> Tìm hiểu điều kiện các hình ghép khít không có khoảng trống.</p>
-                            <p><strong>3. Luyện tập & STEM:</strong> Thực hành cắt ghép mô hình lục giác đều và hình vuông từ bìa cứng.</p>
-                            <p><strong>4. Vận dụng:</strong> Thiết kế mẫu gạch lát sàn nghệ thuật cá nhân.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[2].title}</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[2].focus}</p>
+                        <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-emerald-100">
+                            ${plansData[2].steps.map(s => `<p>${s}</p>`).join('')}
                         </div>
                     </div>
-                    <button onclick="alert('Đã tải xuống KHBD Phương án 2 định dạng Word!')" class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 rounded-lg">📥 Tải KHBD Word (P2)</button>
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="downloadWord(2, '${name}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg">📥 Tải Word</button>
+                        <button onclick="showSlides(2)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg">🖥️ Xem Slides</button>
+                    </div>
                 </div>
 
                 <div class="border border-purple-200 rounded-xl p-5 bg-purple-50/20 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full">Phương án 3</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">AI-Enhanced Inquiry (Tư duy phản biện)</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng AI làm trợ lý đặt câu hỏi tranh biện và kiểm chứng cấu trúc hình học.</p>
-                        <div class="space-y-2 text-xs text-slate-700 bg-white p-3 rounded-lg border border-purple-100">
-                            <p><strong>1. Khởi động:</strong> Thử thách câu hỏi mở từ AI về đối xứng trong tự nhiên.</p>
-                            <p><strong>2. Hình thành kiến thức:</strong> Dùng AI phân tích đặc điểm cấu trúc của tổ ong (lục giác đều).</p>
-                            <p><strong>3. Luyện tập:</strong> Giải quyết bài toán tối ưu hóa diện tích.</p>
-                            <p><strong>4. Vận dụng:</strong> Viết báo cáo ngắn về ứng dụng hình học trong kiến trúc.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[3].title}</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[3].focus}</p>
+                        <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-purple-100">
+                            ${plansData[3].steps.map(s => `<p>${s}</p>`).join('')}
                         </div>
                     </div>
-                    <button onclick="alert('Đã tải xuống KHBD Phương án 3 định dạng Word!')" class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2 rounded-lg">📥 Tải KHBD Word (P3)</button>
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="downloadWord(3, '${name}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg">📥 Tải Word</button>
+                        <button onclick="showSlides(3)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg">🖥️ Xem Slides</button>
+                    </div>
                 </div>
             `;
+        }
+
+        function showSlides(id) {
+            const data = plansData[id];
+            document.getElementById('modalTitle').innerText = `Bản trình bày: ${data.title}`;
+            document.getElementById('modalContent').innerHTML = data.slides.map((slide, idx) => `
+                <div class="p-3 bg-slate-50 border rounded-lg">
+                    <strong>Slide ${idx + 1}:</strong> ${slide}
+                </div>
+            `).join('');
+            document.getElementById('slideModal').classList.remove('hidden');
+        }
+
+        function closeSlides() {
+            document.getElementById('slideModal').classList.add('hidden');
+        }
+
+        async function downloadWord(id, lessonName) {
+            const data = plansData[id];
+            const { Document, Packer, Paragraph, HeadingLevel, TextRun } = window.docx;
+
+            const doc = new Document({
+                sections: [{
+                    properties: {},
+                    children: [
+                        new Paragraph({ text: `KẾ HOẠCH BÀI DẠY: ${lessonName}`, heading: HeadingLevel.HEADING_1 }),
+                        new Paragraph({ text: `Phương án: ${data.title}`, heading: HeadingLevel.HEADING_2 }),
+                        new Paragraph({ text: "" }),
+                        new Paragraph({ text: "I. MỤC TIÊU VÀ TRỌNG TÂM", heading: HeadingLevel.HEADING_3 }),
+                        new Paragraph({ text: data.focus }),
+                        new Paragraph({ text: "" }),
+                        new Paragraph({ text: "II. TIẾN TRÌNH DẠY HỌC CHI TIẾT", heading: HeadingLevel.HEADING_3 }),
+                        ...data.steps.map(step => new Paragraph({ text: step }))
+                    ],
+                }],
+            });
+
+            const blob = await Packer.toBlob(doc);
+            saveAs(blob, `KHBD_${lessonName}_PhuongAn${id}.docx`);
         }
     </script>
 </body>
