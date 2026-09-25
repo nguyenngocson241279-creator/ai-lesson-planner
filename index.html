@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hệ thống Trợ lý AI Xây dựng KHBD & Chuyển đổi số</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Thư viện tạo file Word chuẩn -->
-    <script src="https://cdn.jsdelivr.net/npm/docx@7.1.0/build/docx.js"></script>
 </head>
 <body class="bg-slate-100 font-sans p-6 text-slate-800">
     <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
@@ -26,7 +24,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                 <div class="md:col-span-3">
                     <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Tên bài học / Chủ đề</label>
-                    <input type="text" id="lessonInput" value="Bài 18. Tam giác đều, Hình vuông, Lục giác đều" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none bg-white">
+                    <input type="text" id="lessonInput" value="Bài 12. Hình thang cân" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none bg-white">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Bộ môn</label>
@@ -72,52 +70,52 @@
         const plansData = {
             1: {
                 title: "Digital-First (Công nghệ số & Mô phỏng)",
-                focus: "Sử dụng phần mềm mô phỏng, thực tế ảo (VR) hoặc trạm tương tác số để trực quan hóa kiến thức.",
+                focus: "Sử dụng phần mềm mô phỏng GeoGebra/PhET để trực quan hóa tính chất hình học.",
                 steps: [
-                    "1. Khởi động: Trò chơi tương tác trực tuyến qua Quizizz/Kahoot.",
-                    "2. Hình thành kiến thức: Khám phá trực quan qua phần mềm chuyên dụng (GeoGebra/PhET/GIS).",
+                    "1. Khởi động: Trò chơi tương tác trực tuyến qua Quizizz.",
+                    "2. Hình thành kiến thức: Khám phá trực quan tính chất góc kề, đường chéo trên GeoGebra.",
                     "3. Luyện tập: Hệ thống bài tập trắc nghiệm thông minh phân hóa.",
-                    "4. Vận dụng: Tìm kiếm và ghi nhận dữ liệu thực tế bằng công cụ số."
+                    "4. Vận dụng: Tìm kiếm hình ảnh thực tế có ứng dụng hình thang cân."
                 ],
                 slides: [
                     "Slide 1: Tên bài học & Mục tiêu chuyển đổi số",
                     "Slide 2: Tình huống xuất phát & Trò chơi khởi động",
-                    "Slide 3: Khám phá khái niệm cốt lõi qua mô hình số",
+                    "Slide 3: Khám phá tính chất qua phần mềm GeoGebra",
                     "Slide 4: Thảo luận nhóm & Hệ thống hóa kiến thức",
                     "Slide 5: Luyện tập tương tác & Bài tập vận dụng thực tế"
                 ]
             },
             2: {
                 title: "Dự án STEM / Học qua Thiết kế",
-                focus: "Giải quyết vấn đề thực tiễn thông qua chế tạo mô hình, ứng dụng kỹ thuật và toán học liên môn.",
+                focus: "Giải quyết vấn đề thực tiễn thông qua chế tạo mô hình giàn mái nhà hoặc khung cửa hình thang cân.",
                 steps: [
-                    "1. Khởi động: Đặt vấn đề từ nhu cầu thực tiễn đời sống hoặc địa phương.",
-                    "2. Hình thành kiến thức: Nghiên cứu cơ sở khoa học và tiêu chuẩn kỹ thuật.",
-                    "3. Luyện tập & STEM: Thiết kế bản vẽ, chế tạo nguyên mẫu từ vật liệu tái chế.",
-                    "4. Vận dụng: Thử nghiệm, đánh giá, thuyết trình sản phẩm và tối ưu hóa."
+                    "1. Khởi động: Đặt vấn đề từ cấu trúc mái nhà trong xây dựng.",
+                    "2. Hình thành kiến thức: Nghiên cứu tiêu chuẩn kỹ thuật cân bằng lực.",
+                    "3. Luyện tập & STEM: Thiết kế bản vẽ và chế tạo mô hình từ vật liệu tái chế.",
+                    "4. Vận dụng: Thử nghiệm tải trọng, thuyết trình sản phẩm và tối ưu hóa."
                 ],
                 slides: [
                     "Slide 1: Chủ đề Dự án STEM & Mục tiêu phát triển năng lực",
                     "Slide 2: Thử thách kỹ thuật từ thực tiễn đời sống",
                     "Slide 3: Cơ sở lý thuyết & Tiêu chuẩn thiết kế sản phẩm",
-                    "Slide 4: Quy trình chế tạo nguyên mẫu & Thử nghiệm",
+                    "Slide 4: Quy trình chế tạo mô hình & Thử nghiệm",
                     "Slide 5: Trưng bày sản phẩm, Báo cáo & Đánh giá Rubrics"
                 ]
             },
             3: {
                 title: "AI-Enhanced Inquiry (Tư duy phản biện)",
-                focus: "Sử dụng AI làm trợ lý đối thoại, phân tích dữ liệu lớn và phương pháp nghiên cứu khoa học.",
+                focus: "Sử dụng AI làm trợ lý đối thoại, phân tích dữ liệu và phương pháp chứng minh hình học sáng tạo.",
                 steps: [
                     "1. Khởi động: Thử thách câu hỏi mở, kích thích tư duy từ AI Assistant.",
-                    "2. Hình thành kiến thức: Phân tích dữ liệu, kiểm chứng giả thuyết khoa học.",
-                    "3. Luyện tập: Giải quyết bài toán tư duy bậc cao, phản biện giải pháp.",
-                    "4. Vận dụng: Viết tiểu luận nghiên cứu nhỏ hoặc giải pháp sáng tạo."
+                    "2. Hình thành kiến thức: Phân tích các dấu hiệu nhận biết, kiểm chứng giả thuyết.",
+                    "3. Luyện tập: Giải quyết bài toán tư duy bậc cao, phản biện các cách giải khác nhau.",
+                    "4. Vận dụng: Viết báo cáo ngắn ứng dụng hình thang cân trong kiến trúc."
                 ],
                 slides: [
                     "Slide 1: Tư duy phản biện & Nghiên cứu khoa học cùng AI",
                     "Slide 2: Câu hỏi lớn (Big Question) & Xây dựng giả thuyết",
                     "Slide 3: Phân tích dữ liệu, tranh luận & Kiểm chứng",
-                    "Slide 4: Giải quyết vấn đề phức tạp & Tối ưu hóa giải pháp",
+                    "Slide 4: Giải quyết bài toán phức tạp & Tối ưu hóa giải pháp",
                     "Slide 5: Tổng kết bài học & Định hướng nghiên cứu mở rộng"
                 ]
             }
@@ -196,45 +194,43 @@
             document.getElementById('slideModal').classList.add('hidden');
         }
 
-        async function downloadWord(id, lessonName, subject) {
+        function downloadWord(id, lessonName, subject) {
             const data = plansData[id];
-            const { Document, Packer, Paragraph, HeadingLevel } = window.docx;
+            
+            // Tạo nội dung tài liệu chuẩn định dạng Word
+            const content = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset='utf-8'><title>KHBD</title></head>
+                <body style='font-family: "Times New Roman", Times, serif; font-size: 14pt; line-height: 1.5;'>
+                    <h2 style='text-align: center; color: #002060;'>KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}</h2>
+                    <h3 style='text-align: center; color: #595959;'>Bộ môn: ${subject} | Phương án: ${data.title}</h3>
+                    <hr/>
+                    <h3 style='color: #1f4e78;'>I. MỤC TIÊU VÀ TRỌNG TÂM PHÁT TRIỂN NĂNG LỰC</h3>
+                    <p><strong>Trọng tâm sư phạm:</strong> ${data.focus}</p>
+                    
+                    <h3 style='color: #1f4e78;'>II. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG)</h3>
+                    ${data.steps.map(step => `<p>• ${step}</p>`).join('')}
+                    
+                    <h3 style='color: #1f4e78;'>III. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU SỐ</h3>
+                    <p>- Hệ thống Rubrics đánh giá năng lực học sinh và sản phẩm học tập số.</p>
+                </body>
+                </html>
+            `;
 
-            const doc = new Document({
-                sections: [{
-                    properties: {},
-                    children: [
-                        new Paragraph({ text: `KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}`, heading: HeadingLevel.HEADING_1 }),
-                        new Paragraph({ text: `Bộ môn: ${subject} | Phương án: ${data.title}`, heading: HeadingLevel.HEADING_2 }),
-                        new Paragraph({ text: "" }),
-                        new Paragraph({ text: "I. MỤC TIÊU VÀ TRỌNG TÂM PHÁT TRIỂN NĂNG LỰC", heading: HeadingLevel.HEADING_3 }),
-                        new Paragraph({ text: data.focus }),
-                        new Paragraph({ text: "" }),
-                        new Paragraph({ text: "II. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG)", heading: HeadingLevel.HEADING_3 }),
-                        ...data.steps.map(step => new Paragraph({ text: step })),
-                        new Paragraph({ text: "" }),
-                        new Paragraph({ text: "III. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU SỐ", heading: HeadingLevel.HEADING_3 }),
-                        new Paragraph({ text: "- Rubrics đánh giá năng lực học sinh và sản phẩm học tập." })
-                    ],
-                }],
+            const blob = new Blob(['\ufeff' + content], {
+                type: 'application/msword'
             });
-
-            try {
-                const blob = await Packer.toBlob(doc);
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `KHBD_${subject}_${lessonName.replace(/[^a-zA-Z0-9]/g, '_')}_PA${id}.docx`;
-                document.body.appendChild(a);
-                a.click();
-                setTimeout(() => {
-                    document.body.removeChild(a);
-                    window.URL.revokeObjectURL(url);
-                }, 100);
-            } catch (err) {
-                alert("Có lỗi khi tạo tệp Word. Vui lòng thử lại!");
-                console.error(err);
-            }
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `KHBD_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
         }
     </script>
 </body>
