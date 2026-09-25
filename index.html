@@ -12,27 +12,38 @@
         <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-800 p-6 text-white flex justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold flex items-center gap-2">✨ Trợ lý AI Chuyên môn Toán - Tin - KHTN - LSĐL</h1>
-                <p class="text-blue-100 text-sm mt-1">Hệ thống xây dựng KHBD chuẩn phát triển năng lực, tích hợp Chuyển đổi số, AI và STEM.</p>
+                <p class="text-blue-100 text-sm mt-1">Hệ thống xây dựng KHBD chuẩn phát triển năng lực theo sách Kết nối tri thức, tích hợp AI & STEM.</p>
             </div>
             <div class="text-right hidden md:block">
-                <span class="text-xs bg-blue-600/60 px-3 py-1.5 rounded-full border border-blue-400">Phiên bản Pro 2026</span>
+                <span class="text-xs bg-blue-600/60 px-3 py-1.5 rounded-full border border-blue-400">Chương trình GDPT 2018</span>
             </div>
         </div>
         
         <!-- Input Dashboard -->
-        <div class="p-6 bg-slate-50 border-b border-slate-200">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div class="md:col-span-3">
-                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Tên bài học / Chủ đề</label>
-                    <input type="text" id="lessonInput" value="Bài 12. Hình thang cân" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none bg-white">
-                </div>
+        <div class="p-6 bg-slate-50 border-b border-slate-200 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Bộ môn</label>
-                    <select id="subjectSelect" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    <select id="subjectSelect" onchange="updateLessonList()" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
                         <option value="Toan">Toán học</option>
-                        <option value="Tin">Tin học</option>
                         <option value="KHTN">Khoa học Tự nhiên</option>
+                        <option value="Tin">Tin học</option>
                         <option value="LSDL">Lịch sử - Địa lý</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Khối lớp</label>
+                    <select id="gradeSelect" onchange="updateLessonList()" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                        <option value="6">Lớp 6</option>
+                        <option value="7">Lớp 7</option>
+                        <option value="8">Lớp 8</option>
+                        <option value="9" selected>Lớp 9</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Chọn bài học (Kết nối tri thức)</label>
+                    <select id="lessonSelect" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none font-medium text-blue-900">
+                        <!-- Danh sách bài học sẽ tự động thay đổi theo môn và khối -->
                     </select>
                 </div>
             </div>
@@ -44,8 +55,8 @@
         <!-- Result Section -->
         <div id="resultSection" class="p-6 hidden space-y-6">
             <div class="flex justify-between items-center">
-                <h2 class="text-lg font-bold text-slate-800">Ma trận 3 Phương án Phát triển Năng lực:</h2>
-                <span class="text-xs text-slate-500 bg-slate-200 px-2.5 py-1 rounded">Tự động hóa 100%</span>
+                <h2 id="resultTitle" class="text-lg font-bold text-slate-800">Ma trận 3 Phương án Phát triển Năng lực:</h2>
+                <span class="text-xs text-slate-500 bg-slate-200 px-2.5 py-1 rounded">Sách Kết nối tri thức</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="planCards"></div>
         </div>
@@ -67,126 +78,215 @@
     </div>
 
     <script>
-        const plansData = {
-            1: {
-                title: "Digital-First (Công nghệ số & Mô phỏng)",
-                focus: "Sử dụng phần mềm mô phỏng GeoGebra/PhET để trực quan hóa tính chất hình học.",
-                steps: [
-                    "1. Khởi động: Trò chơi tương tác trực tuyến qua Quizizz.",
-                    "2. Hình thành kiến thức: Khám phá trực quan tính chất góc kề, đường chéo trên GeoGebra.",
-                    "3. Luyện tập: Hệ thống bài tập trắc nghiệm thông minh phân hóa.",
-                    "4. Vận dụng: Tìm kiếm hình ảnh thực tế có ứng dụng hình thang cân."
+        // Dữ liệu mục lục chuẩn bộ sách Kết nối tri thức với cuộc sống
+        const curriculumData = {
+            Toan: {
+                9: [
+                    "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+                    "Bài 2. Phương trình bậc nhất hai ẩn và hệ hai phương trình bậc nhất hai ẩn",
+                    "Bài 3. Giải hệ hai phương trình bậc nhất hai ẩn",
+                    "Bài 12. Hình thang cân",
+                    "Bài 18. Tam giác đều, Hình vuông, Lục giác đều",
+                    "Bài 25. Bảng tần số và biểu đồ tần số",
+                    "Bài 26. Xác suất của biến cố ngẫu nhiên"
                 ],
-                slides: [
-                    "Slide 1: Tên bài học & Mục tiêu chuyển đổi số",
-                    "Slide 2: Tình huống xuất phát & Trò chơi khởi động",
-                    "Slide 3: Khám phá tính chất qua phần mềm GeoGebra",
-                    "Slide 4: Thảo luận nhóm & Hệ thống hóa kiến thức",
-                    "Slide 5: Luyện tập tương tác & Bài tập vận dụng thực tế"
+                8: [
+                    "Bài 1. Đơn thức nhiều biến. Đa thức nhiều biến",
+                    "Bài 9. Phân thức đại biểu",
+                    "Bài 22. Tính chất đường phân giác của tam giác",
+                    "Bài 31. Quan hệ giữa góc và cạnh đối diện trong một tam giác"
+                ],
+                7: [
+                    "Bài 1. Tập hợp các số hữu tỉ",
+                    "Bài 9. Số thực",
+                    "Bài 17. Thu thập và phân loại dữ liệu",
+                    "Bài 25. Đa thức một biến",
+                    "Bài 32. Quan hệ giữa đường vuông góc và đường xiên"
+                ],
+                6: [
+                    "Bài 1. Tập hợp",
+                    "Bài 5. Phép chia hết trong tập hợp các số tự nhiên",
+                    "Bài 10. Số nguyên tố",
+                    "Bài 17. Hình học phẳng: Tam giác đều, Hình vuông, Lục giác đều"
                 ]
             },
-            2: {
-                title: "Dự án STEM / Học qua Thiết kế",
-                focus: "Giải quyết vấn đề thực tiễn thông qua chế tạo mô hình giàn mái nhà hoặc khung cửa hình thang cân.",
-                steps: [
-                    "1. Khởi động: Đặt vấn đề từ cấu trúc mái nhà trong xây dựng.",
-                    "2. Hình thành kiến thức: Nghiên cứu tiêu chuẩn kỹ thuật cân bằng lực.",
-                    "3. Luyện tập & STEM: Thiết kế bản vẽ và chế tạo mô hình từ vật liệu tái chế.",
-                    "4. Vận dụng: Thử nghiệm tải trọng, thuyết trình sản phẩm và tối ưu hóa."
+            KHTN: {
+                9: [
+                    "Bài 1. Nhận biết một số dụng cụ và hóa chất. Quy tắc an toàn",
+                    "Bài 5. Năng lượng hao phí. Hiệu suất",
+                    "Bài 10. Điện trở. Định luật Ohm",
+                    "Bài 15. Áp suất chất lỏng. Lực đẩy Archimedes",
+                    "Bài 21. Gen và ADN",
+                    "Bài 25. Di truyền học Mendel"
                 ],
-                slides: [
-                    "Slide 1: Chủ đề Dự án STEM & Mục tiêu phát triển năng lực",
-                    "Slide 2: Thử thách kỹ thuật từ thực tiễn đời sống",
-                    "Slide 3: Cơ sở lý thuyết & Tiêu chuẩn thiết kế sản phẩm",
-                    "Slide 4: Quy trình chế tạo mô hình & Thử nghiệm",
-                    "Slide 5: Trưng bày sản phẩm, Báo cáo & Đánh giá Rubrics"
+                8: [
+                    "Bài 1. Sử dụng hóa chất và thiết bị trong phòng thí nghiệm",
+                    "Bài 6. Tính theo phương trình hóa học",
+                    "Bài 12. Áp suất trên bề mặt",
+                    "Bài 20. Hệ hô hấp ở người",
+                    "Bài 35. Hệ thần kinh và các giác quan"
+                ],
+                7: [
+                    "Bài 1. Phương pháp và kĩ năng học tập môn Khoa học tự nhiên",
+                    "Bài 5. Cấu trúc của nguyên tử",
+                    "Bài 10. Dao động và sóng",
+                    "Bài 18. Đa dạng sinh học",
+                    "Bài 25. Trao đổi chất và chuyển hóa năng lượng ở sinh vật"
+                ],
+                6: [
+                    "Bài 1. Giới thiệu về Khoa học tự nhiên",
+                    "Bài 6. Các thể của chất",
+                    "Bài 10. Tế bào - đơn vị cơ sở của sự sống",
+                    "Bài 20. Đa dạng thế giới sống"
                 ]
             },
-            3: {
-                title: "AI-Enhanced Inquiry (Tư duy phản biện)",
-                focus: "Sử dụng AI làm trợ lý đối thoại, phân tích dữ liệu và phương pháp chứng minh hình học sáng tạo.",
-                steps: [
-                    "1. Khởi động: Thử thách câu hỏi mở, kích thích tư duy từ AI Assistant.",
-                    "2. Hình thành kiến thức: Phân tích các dấu hiệu nhận biết, kiểm chứng giả thuyết.",
-                    "3. Luyện tập: Giải quyết bài toán tư duy bậc cao, phản biện các cách giải khác nhau.",
-                    "4. Vận dụng: Viết báo cáo ngắn ứng dụng hình thang cân trong kiến trúc."
+            Tin: {
+                9: [
+                    "Bài 1. Mạng máy tính trong cuộc sống hiện đại",
+                    "Bài 5. Bảo mật thông tin trong môi trường số",
+                    "Bài 10. Thực hành sử dụng phần mềm mô phỏng",
+                    "Bài 15. Thuật toán sắp xếp và tìm kiếm cơ bản"
                 ],
-                slides: [
-                    "Slide 1: Tư duy phản biện & Nghiên cứu khoa học cùng AI",
-                    "Slide 2: Câu hỏi lớn (Big Question) & Xây dựng giả thuyết",
-                    "Slide 3: Phân tích dữ liệu, tranh luận & Kiểm chứng",
-                    "Slide 4: Giải quyết bài toán phức tạp & Tối ưu hóa giải pháp",
-                    "Slide 5: Tổng kết bài học & Định hướng nghiên cứu mở rộng"
+                8: [
+                    "Bài 1. Khám phá máy tính và mạng máy tính",
+                    "Bài 5. Sử dụng phần mềm bảng tính nâng cao",
+                    "Bài 10. Thuật toán và cấu trúc điều khiển trong lập trình"
+                ],
+                7: [
+                    "Bài 1. Thiết bị đầu ra và thiết bị vào của máy tính",
+                    "Bài 5. Mạng xã hội và văn hóa ứng xử trên mạng",
+                    "Bài 10. Lập trình tính toán với Python"
+                ],
+                6: [
+                    "Bài 1. Thông tin và dữ liệu",
+                    "Bài 5. Mạng Internet và các dịch vụ trực tuyến",
+                    "Bài 10. Sơ đồ tư duy và tổ chức thông tin"
+                ]
+            },
+            LSDL: {
+                9: [
+                    "Bài 1. Liên Xô và các nước Đông Âu từ năm 1945 đến năm 1991",
+                    "Bài 5. Phong trào giải phóng dân tộc từ năm 1945 đến năm 2000",
+                    "Bài 10. Không gian địa lý kinh tế vùng Trung du và miền núi Bắc Bộ",
+                    "Bài 15. Địa lý các ngành kinh tế Việt Nam"
+                ],
+                8: [
+                    "Bài 1. Châu Âu và Bắc Mỹ từ nửa sau thế kỷ XVI đến thế kỷ XVIII",
+                    "Bài 6. Việt Nam từ năm 1858 đến năm 1884",
+                    "Bài 12. Vị trí địa lý và tài nguyên khoáng sản Việt Nam"
+                ],
+                7: [
+                    "Bài 1. Tây Âu từ thế kỷ V đến thế kỷ XVI",
+                    "Bài 5. Đại Việt thời Đinh - Tiền Lê",
+                    "Bài 10. Thiên nhiên và con người châu Phi, châu Mỹ"
+                ],
+                6: [
+                    "Bài 1. Lịch sử là gì?",
+                    "Bài 5. Xã hội nguyên thủy",
+                    "Bài 10. Các cuộc khởi nghĩa lớn thời Bắc thuộc",
+                    "Bài 15. Trái đất - hành tinh của hệ mặt trời"
                 ]
             }
         };
 
-        function generatePlan() {
-            const name = document.getElementById('lessonInput').value;
+        // Hàm cập nhật danh sách bài học theo môn và khối lớp
+        function updateLessonList() {
             const subject = document.getElementById('subjectSelect').value;
-            if(!name) { alert('Vui lòng nhập tên bài học!'); return; }
+            const grade = document.getElementById('gradeSelect').value;
+            const lessonSelect = document.getElementById('lessonSelect');
+            
+            lessonSelect.innerHTML = '';
+            const lessons = curriculumData[subject]?.[grade] || ["Bài 1. Khởi động chủ đề cơ bản", "Bài 2. Thực hành chuyên đề trọng tâm"];
+            
+            lessons.forEach(lesson => {
+                const opt = document.createElement('option');
+                opt.value = lesson;
+                opt.textContent = lesson;
+                lessonSelect.appendChild(opt);
+            });
+        }
+
+        // Khởi tạo danh sách khi tải trang
+        window.onload = function() {
+            updateLessonList();
+        };
+
+        function generatePlan() {
+            const subject = document.getElementById('subjectSelect').value;
+            const grade = document.getElementById('gradeSelect').value;
+            const lessonName = document.getElementById('lessonSelect').value;
             
             const result = document.getElementById('resultSection');
             const cards = document.getElementById('planCards');
+            document.getElementById('resultTitle').innerText = `Ma trận 3 Phương án (Môn ${subject} - Lớp ${grade} - Sách Kết nối tri thức)`;
             result.classList.remove('hidden');
             
             cards.innerHTML = `
                 <div class="border border-blue-200 rounded-xl p-5 bg-blue-50/20 flex flex-col justify-between shadow-sm">
                     <div>
                         <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full">Phương án 1</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[1].title}</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[1].focus}</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">Digital-First (Công nghệ số & Mô phỏng)</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Ứng dụng phần mềm chuyên dụng và mô phỏng số tương tác.</p>
                         <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-blue-100">
-                            ${plansData[1].steps.map(s => `<p>${s}</p>`).join('')}
+                            <p><strong>1. Khởi động:</strong> Minigame số kiểm tra kiến thức nền.</p>
+                            <p><strong>2. Khám phá:</strong> Tương tác trực tiếp trên phần mềm chuyên môn.</p>
+                            <p><strong>3. Luyện tập:</strong> Trắc nghiệm phân hóa trên hệ thống LMS.</p>
+                            <p><strong>4. Vận dụng:</strong> Thu thập dữ liệu thực tế số hóa.</p>
                         </div>
                     </div>
                     <div class="mt-4 flex gap-2">
-                        <button onclick="downloadWord(1, '${name}', '${subject}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
-                        <button onclick="showSlides(1)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
+                        <button onclick="downloadWord(1, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="showSlides(1, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
 
                 <div class="border border-emerald-200 rounded-xl p-5 bg-emerald-50/20 flex flex-col justify-between shadow-sm">
                     <div>
                         <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">Phương án 2</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[2].title}</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[2].focus}</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">Dự án STEM / Học qua Thiết kế</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Giải quyết vấn đề thực tiễn, chế tạo nguyên mẫu vật lý hoặc sản phẩm liên môn.</p>
                         <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-emerald-100">
-                            ${plansData[2].steps.map(s => `<p>${s}</p>`).join('')}
+                            <p><strong>1. Khởi động:</strong> Tình huống thực tế tại địa phương.</p>
+                            <p><strong>2. Nghiên cứu:</strong> Cơ sở khoa học và tiêu chuẩn kỹ thuật.</p>
+                            <p><strong>3. Thực hành STEM:</strong> Chế tạo sản phẩm từ vật liệu tái chế.</p>
+                            <p><strong>4. Vận dụng:</strong> Thử nghiệm, tối ưu hóa và thuyết trình.</p>
                         </div>
                     </div>
                     <div class="mt-4 flex gap-2">
-                        <button onclick="downloadWord(2, '${name}', '${subject}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
-                        <button onclick="showSlides(2)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
+                        <button onclick="downloadWord(2, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="showSlides(2, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
 
                 <div class="border border-purple-200 rounded-xl p-5 bg-purple-50/20 flex flex-col justify-between shadow-sm">
                     <div>
                         <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full">Phương án 3</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2">${plansData[3].title}</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> ${plansData[3].focus}</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2">AI-Enhanced Inquiry (Tư duy phản biện)</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng AI làm trợ lý đối thoại, nghiên cứu khoa học và tranh biện giải pháp.</p>
                         <div class="space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-lg border border-purple-100">
-                            ${plansData[3].steps.map(s => `<p>${s}</p>`).join('')}
+                            <p><strong>1. Khởi động:</strong> Câu hỏi lớn kích thích tư duy từ AI.</p>
+                            <p><strong>2. Phân tích:</strong> Khảo sát dữ liệu, kiểm chứng giả thuyết.</p>
+                            <p><strong>3. Luyện tập:</strong> Giải quyết bài toán tư duy bậc cao.</p>
+                            <p><strong>4. Vận dụng:</strong> Viết báo cáo khoa học hoặc tiểu luận.</p>
                         </div>
                     </div>
                     <div class="mt-4 flex gap-2">
-                        <button onclick="downloadWord(3, '${name}', '${subject}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
-                        <button onclick="showSlides(3)" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
+                        <button onclick="downloadWord(3, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="showSlides(3, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
             `;
         }
 
-        function showSlides(id) {
-            const data = plansData[id];
-            document.getElementById('modalTitle').innerText = `Bản trình bày: ${data.title}`;
-            document.getElementById('modalContent').innerHTML = data.slides.map((slide, idx) => `
-                <div class="p-3 bg-slate-50 border rounded-lg flex items-center justify-between">
-                    <div><span class="font-semibold text-blue-600">Slide ${idx + 1}:</span> ${slide}</div>
-                    <span class="text-xs bg-slate-200 px-2 py-1 rounded text-slate-600">Chuẩn 16:9</span>
-                </div>
-            `).join('');
+        function showSlides(id, lessonName) {
+            document.getElementById('modalTitle').innerText = `Bản trình bày: ${lessonName} (Phương án ${id})`;
+            document.getElementById('modalContent').innerHTML = `
+                <div class="p-3 bg-slate-50 border rounded-lg"><strong>Slide 1:</strong> Tiêu đề bài học & Mục tiêu năng lực</div>
+                <div class="p-3 bg-slate-50 border rounded-lg"><strong>Slide 2:</strong> Tình huống xuất phát & Khởi động</div>
+                <div class="p-3 bg-slate-50 border rounded-lg"><strong>Slide 3:</strong> Khám phá kiến thức cốt lõi (Sách Kết nối tri thức)</div>
+                <div class="p-3 bg-slate-50 border rounded-lg"><strong>Slide 4:</strong> Hoạt động luyện tập & Thảo luận nhóm</div>
+                <div class="p-3 bg-slate-50 border rounded-lg"><strong>Slide 5:</strong> Vận dụng thực tiễn & Hướng dẫn về nhà</div>
+            `;
             document.getElementById('slideModal').classList.remove('hidden');
         }
 
@@ -194,37 +294,37 @@
             document.getElementById('slideModal').classList.add('hidden');
         }
 
-        function downloadWord(id, lessonName, subject) {
-            const data = plansData[id];
-            
-            // Tạo nội dung tài liệu chuẩn định dạng Word
+        function downloadWord(id, lessonName, subject, grade) {
+            const planNames = {1: "Digital-First (Công nghệ số)", 2: "Dự án STEM", 3: "AI-Enhanced Inquiry (Phản biện)"};
             const content = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head><meta charset='utf-8'><title>KHBD</title></head>
                 <body style='font-family: "Times New Roman", Times, serif; font-size: 14pt; line-height: 1.5;'>
                     <h2 style='text-align: center; color: #002060;'>KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}</h2>
-                    <h3 style='text-align: center; color: #595959;'>Bộ môn: ${subject} | Phương án: ${data.title}</h3>
+                    <h3 style='text-align: center; color: #595959;'>Bộ môn: ${subject} - Lớp ${grade} (Sách Kết nối tri thức)</h3>
+                    <h3 style='text-align: center; color: #1f4e78;'>Phương án thiết kế: ${planNames[id]}</h3>
                     <hr/>
                     <h3 style='color: #1f4e78;'>I. MỤC TIÊU VÀ TRỌNG TÂM PHÁT TRIỂN NĂNG LỰC</h3>
-                    <p><strong>Trọng tâm sư phạm:</strong> ${data.focus}</p>
+                    <p><strong>1. Kiến thức:</strong> Nắm vững các nội dung trọng tâm theo chuẩn chương trình GDPT 2018 bộ sách Kết nối tri thức.</p>
+                    <p><strong>2. Năng lực đặc thù:</strong> Phát triển tư duy khoa học, năng lực tự chủ, hợp tác và ứng dụng công nghệ.</p>
                     
-                    <h3 style='color: #1f4e78;'>II. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG)</h3>
-                    ${data.steps.map(step => `<p>• ${step}</p>`).join('')}
+                    <h3 style='color: #1f4e78;'>II. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG CHUẨN)</h3>
+                    <p><strong>Hoạt động 1: Khởi động</strong> - Tạo tâm thế học tập và kết nối thực tiễn.</p>
+                    <p><strong>Hoạt động 2: Hình thành kiến thức mới</strong> - Khám phá nội dung bài học qua phương pháp ${planNames[id]}.</p>
+                    <p><strong>Hoạt động 3: Luyện tập</strong> - Hệ thống bài tập củng cố kiến thức phân hóa.</p>
+                    <p><strong>Hoạt động 4: Vận dụng</strong> - Giải quyết vấn đề thực tế đời sống và địa phương.</p>
                     
                     <h3 style='color: #1f4e78;'>III. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU SỐ</h3>
-                    <p>- Hệ thống Rubrics đánh giá năng lực học sinh và sản phẩm học tập số.</p>
+                    <p>- Hệ thống Rubrics đánh giá năng lực học sinh, phiếu học tập số và tài nguyên tích hợp AI/STEM.</p>
                 </body>
                 </html>
             `;
 
-            const blob = new Blob(['\ufeff' + content], {
-                type: 'application/msword'
-            });
-            
+            const blob = new Blob(['\ufeff' + content], { type: 'application/msword' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `KHBD_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
+            a.download = `KHBD_Lop${grade}_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
             document.body.appendChild(a);
             a.click();
             setTimeout(() => {
