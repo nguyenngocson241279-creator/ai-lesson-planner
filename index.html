@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Trợ lý AI Chuyên môn chuẩn CV 5512 & MathType - THCS Nguyễn Du</title>
+    <title>Hệ thống Trợ lý AI Chuyên môn CV 5512 - Phân hóa & STEM - THCS Nguyễn Du</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-100 font-sans p-6 text-slate-800">
@@ -11,11 +11,11 @@
         <!-- Header -->
         <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-6 text-white flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold flex items-center gap-2">🎓 Trợ lý AI Chuyên môn - Tiêu chuẩn CV 5512 & MathType</h1>
-                <p class="text-blue-200 text-sm mt-1">Hệ thống sinh KHBD chi tiết, tích hợp công thức toán học MathType chuẩn, Sách Kết nối tri thức.</p>
+                <h1 class="text-2xl font-bold flex items-center gap-2">🎓 Trợ lý AI Chuyên môn - CV 5512 (Phân hóa Nhận biết/Thông hiểu & STEM)</h1>
+                <p class="text-blue-200 text-sm mt-1">Hệ thống sinh KHBD chi tiết có ví dụ minh họa theo mức độ, bài tập tương tự và ứng dụng STEM cụ thể.</p>
             </div>
             <div class="text-right hidden md:block">
-                <span class="text-xs bg-blue-600 px-3 py-1.5 rounded-full font-semibold border border-blue-400">Phiên bản MathType Pro</span>
+                <span class="text-xs bg-blue-600 px-3 py-1.5 rounded-full font-semibold border border-blue-400">Phiên bản Master Pro</span>
             </div>
         </div>
         
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <button onclick="generatePlan()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2 text-sm tracking-wide">
-                🚀 Phân tích AI chuẩn CV 5512 & Tích hợp Công thức MathType
+                🚀 Phân tích AI chuẩn CV 5512 (Tích hợp Ví dụ Phân hóa & Ứng dụng STEM cụ thể)
             </button>
         </div>
 
@@ -56,7 +56,7 @@
         <div id="resultSection" class="p-6 hidden space-y-6">
             <div class="flex justify-between items-center border-b pb-3">
                 <h2 id="resultTitle" class="text-xl font-bold text-slate-800">Ma trận 3 Phương án Dạy học Chi tiết</h2>
-                <span class="text-xs text-blue-700 bg-blue-100 font-semibold px-3 py-1 rounded-full">CV 5512 + MathType Equations</span>
+                <span class="text-xs text-blue-700 bg-blue-100 font-semibold px-3 py-1 rounded-full">CV 5512 + Phân hóa Mức độ + STEM</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="planCards"></div>
         </div>
@@ -157,24 +157,24 @@
             
             const result = document.getElementById('resultSection');
             const cards = document.getElementById('planCards');
-            document.getElementById('resultTitle').innerText = `Ma trận 3 Phương án chuẩn CV 5512 & MathType: ${lessonName}`;
+            document.getElementById('resultTitle').innerText = `Ma trận 3 Phương án chi tiết chuẩn CV 5512: ${lessonName}`;
             result.classList.remove('hidden');
             
             cards.innerHTML = `
                 <div class="border border-blue-200 rounded-xl p-5 bg-blue-50/20 flex flex-col justify-between shadow-md">
                     <div>
                         <span class="text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Phương án 1</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Digital-First & MathType Integration</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Khai thác mô hình mô phỏng số GeoGebra kết hợp công thức toán học chuẩn chỉnh.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Digital-First & Mô phỏng số (CV 5888)</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Khai thác phần mềm GeoGebra/PhET kèm ví dụ phân hóa và bài tập tương tự.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-blue-100">
-                            <p><strong>1. Khởi động:</strong> Trò chơi tương tác số trực tuyến.</p>
-                            <p><strong>2. Khám phá:</strong> Tương tác mô hình số, hệ thống biểu thức <span style="font-family: Cambria Math, serif; font-style: italic;">ax + b = 0</span>.</p>
-                            <p><strong>3. Luyện tập:</strong> Giải hệ thống bài tập phân hóa tự động.</p>
+                            <p><strong>1. Khởi động:</strong> Trò chơi trực tuyến qua Quizizz.</p>
+                            <p><strong>2. Khám phá (Phân hóa):</strong> Ví dụ nhận biết & Thông hiểu qua phần mềm số, sau đó giao bài tập tương tự cho HS thực hành.</p>
+                            <p><strong>3. Luyện tập:</strong> Giải hệ thống bài tập tự luận/trắc nghiệm.</p>
                             <p><strong>4. Vận dụng:</strong> Khảo sát dữ liệu thực tế số hóa.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(1, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (MathType)</button>
+                        <button onclick="downloadWord(1, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (Có Ví dụ & STEM)</button>
                         <button onclick="showSlides(1, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -182,17 +182,17 @@
                 <div class="border border-emerald-200 rounded-xl p-5 bg-emerald-50/20 flex flex-col justify-between shadow-md">
                     <div>
                         <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Phương án 2</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Dự án STEM & Mô hình Toán học</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Vận dụng công thức tính toán thiết kế nguyên mẫu mô hình vật lý.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Dự án STEM & Chế tạo Mô hình</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Ứng dụng STEM cụ thể: <em>Thiết kế và chế tạo mô hình thực tế từ vật liệu tái chế</em>.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-emerald-100">
-                            <p><strong>1. Khởi động:</strong> Đặt vấn đề thực tiễn từ thách thức thực tế.</p>
-                            <p><strong>2. Nghiên cứu:</strong> Thiết lập công thức định lượng kỹ thuật.</p>
-                            <p><strong>3. Thực hành STEM:</strong> Chế tạo nguyên mẫu từ vật liệu tái chế.</p>
-                            <p><strong>4. Vận dụng:</strong> Thử nghiệm, tối ưu hóa và thuyết trình.</p>
+                            <p><strong>1. Khởi động:</strong> Tình huống thực tiễn đời sống.</p>
+                            <p><strong>2. Nghiên cứu:</strong> Ví dụ tính toán định lượng kỹ thuật (Nhận biết/Thông hiểu).</p>
+                            <p><strong>3. Thực hành STEM:</strong> Giao nhiệm vụ chế tạo mô hình (Ví dụ: Khung cửa, giàn mái, mạch điện).</p>
+                            <p><strong>4. Vận dụng:</strong> Thử nghiệm tải trọng và thuyết trình.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(2, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (MathType)</button>
+                        <button onclick="downloadWord(2, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (Có Ví dụ & STEM)</button>
                         <button onclick="showSlides(2, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -201,16 +201,16 @@
                     <div>
                         <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">Phương án 3</span>
                         <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">AI-Enhanced Inquiry & Phản biện</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng AI hỗ trợ phân tích biểu thức đại số phức tạp và kiểm chứng giả thuyết.</p>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Trợ lý AI hỗ trợ phân tích tình huống, ví dụ tư duy bậc cao và bài tập phản biện.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-purple-100">
-                            <p><strong>1. Khởi động:</strong> Câu hỏi lớn mở rộng tư duy từ AI Assistant.</p>
-                            <p><strong>2. Phân tích:</strong> Kiểm chứng công thức toán học qua dữ liệu lớn.</p>
-                            <p><strong>3. Luyện tập:</strong> Giải quyết bài toán tư duy bậc cao.</p>
+                            <p><strong>1. Khởi động:</strong> Câu hỏi lớn mở rộng tư duy từ AI.</p>
+                            <p><strong>2. Phân tích:</strong> Ví dụ kiểm chứng giả thuyết khoa học.</p>
+                            <p><strong>3. Luyện tập:</strong> Giải bài tập tương tự nâng cao.</p>
                             <p><strong>4. Vận dụng:</strong> Viết báo cáo khoa học ngắn.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(3, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (MathType)</button>
+                        <button onclick="downloadWord(3, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (Có Ví dụ & STEM)</button>
                         <button onclick="showSlides(3, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -220,10 +220,10 @@
         function showSlides(id, lessonName) {
             document.getElementById('modalTitle').innerText = `Bản trình bày chuẩn 16:9: ${lessonName}`;
             document.getElementById('modalContent').innerHTML = `
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 1-2:</strong> Mục tiêu bài học & Hệ thống công thức cốt lõi</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 3-6:</strong> Khám phá kiến thức & Ví dụ biểu thức MathType</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 7-8:</strong> Hoạt động luyện tập & Thảo luận nhóm</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 9-10:</strong> Vận dụng thực tiễn, sản phẩm & Đánh giá Rubrics</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 1-2:</strong> Mục tiêu bài học & Ví dụ Nhận biết</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 3-5:</strong> Khám phá kiến thức & Ví dụ Thông hiểu</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 6-8:</strong> Nhiệm vụ thực hành & Ứng dụng STEM cụ thể</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 9-10:</strong> Vận dụng thực tiễn & Bảng đánh giá Rubrics</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
             `;
             document.getElementById('slideModal').classList.remove('hidden');
         }
@@ -233,63 +233,74 @@
         }
 
         function downloadWord(id, lessonName, subject, grade) {
-            const planNames = {1: "Digital-First & MathType Integration", 2: "Dự án STEM & Mô hình Toán học", 3: "AI-Enhanced Inquiry & Phản biện"};
+            const planNames = {1: "Digital-First & Mô phỏng số (CV 5888)", 2: "Dự án STEM & Chế tạo Mô hình", 3: "AI-Enhanced Inquiry & Phản biện"};
             
-            // Nội dung Word được tích hợp mã OMML / MathML và định dạng ký hiệu toán học chuẩn Office Math
             const content = `
-                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'>
-                <head><meta charset='utf-8'><title>KHBD CV 5512 MathType</title>
-                <style>
-                    body { font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.6; margin: 20px; }
-                    .math-formula { font-family: "Cambria Math", "Times New Roman", serif; font-style: italic; background-color: #f9f9f9; padding: 2px 6px; }
-                </style>
-                </head>
-                <body>
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset='utf-8'><title>KHBD CV 5512 Phân Hóa & STEM</title></head>
+                <body style='font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.6; margin: 20px;'>
                     <p style='text-align: center; font-weight: bold; font-size: 12pt;'>TRƯỜNG THCS NGUYỄN DU</p>
                     <p style='text-align: center; font-weight: bold; font-size: 12pt;'>TỔ CHUYÊN MÔN TOÁN - TIN - KHTN - GDTC</p>
                     <hr style='width: 30%; margin: 0 auto 15px auto;'/>
                     <h2 style='text-align: center; color: #002060; font-size: 15pt;'>KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}</h2>
                     <p style='text-align: center; font-style: italic;'>Môn: ${subject} - Khối lớp ${grade} (Chương trình GDPT 2018 - Sách Kết nối tri thức)</p>
-                    <p style='text-align: center; font-weight: bold; color: #1f4e78;'>Phương án thiết kế: ${planNames[id]} (Tích hợp công thức MathType chuẩn)</p>
+                    <p style='text-align: center; font-weight: bold; color: #1f4e78;'>Phương án thiết kế: ${planNames[id]} (Đạt chuẩn CV 5512 - Có Phân hóa & Ứng dụng STEM)</p>
                     <br/>
                     
                     <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>I. MỤC TIÊU BÀI HỌC</h3>
-                    <p><strong>1. Về kiến thức:</strong> Học sinh nắm vững các định luật, định lý hoặc hệ thống biểu thức toán học cốt lõi của bài học theo đúng yêu cầu cần đạt của chương trình môn ${subject} lớp ${grade}. Ví dụ biểu thức chuẩn: <span class="math-formula">ax + b = 0</span> hoặc <span class="math-formula">x = \\frac{-b}{a}</span>.</p>
-                    <p><strong>2. Về năng lực:</strong> Phát triển tư duy logic, lập luận toán học/khoa học, kỹ năng thao tác công cụ số và sử dụng thành thạo các ký hiệu toán học.</p>
-                    <p><strong>3. Về phẩm chất:</strong> Bồi dưỡng tính cẩn thận, chính xác trong tính toán và tinh thần hợp tác nhóm.</p>
+                    <p><strong>1. Về kiến thức:</strong> Học sinh lĩnh hội sâu sắc các định luật, định lý hoặc khái niệm cốt lõi của bài học theo đúng yêu cầu cần đạt của chương trình môn ${subject} lớp ${grade} - bộ sách Kết nối tri thức với cuộc sống.</p>
+                    <p><strong>2. Về năng lực:</strong></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Năng lực chung:</em> Tự chủ và tự học qua khai thác tài nguyên số; giao tiếp và hợp tác nhóm trong dự án STEM; giải quyết vấn đề sáng tạo.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Năng lực đặc thù (${subject}):</em> Phát triển tư duy logic, lập luận khoa học, kỹ năng thao tác công cụ số và tuân thủ quy tắc sử dụng trí tuệ nhân tạo (AI) an toàn theo hướng dẫn tại Công văn 5588/BGDĐT-GDPT.</p>
+                    <p><strong>3. Về phẩm chất:</strong> Bồi dưỡng tính chăm chỉ, trung thực trong thu thập dữ liệu thí nghiệm/thực tế và tinh thần trách nhiệm cao đối với sản phẩm tập thể.</p>
                     
                     <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU</h3>
-                    <p><strong>1. Đối với giáo viên:</strong> Kế hoạch bài dạy chi tiết, máy chiếu, phần mềm GeoGebra, hệ thống công thức soạn thảo bằng MathType.</p>
-                    <p><strong>2. Đối với học sinh:</strong> SGK Kết nối tri thức, vở ghi, dụng cụ học tập và thiết bị thông minh.</p>
+                    <p><strong>1. Đối với giáo viên:</strong> Kế hoạch bài dạy chi tiết, máy chiếu tương tác, phần mềm mô phỏng (GeoGebra/PhET/GIS), hệ thống phiếu học tập phân hóa.</p>
+                    <p><strong>2. Đối với học sinh:</strong> SGK Kết nối tri thức, vở ghi, thiết bị thông minh (smartphone/tablet), vật liệu tái chế phục vụ hoạt động STEM.</p>
 
                     <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>III. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG CHUẨN CV 5512)</h3>
                     
+                    <!-- HOẠT ĐỘNG 1 -->
                     <p style='font-weight: bold; color: #002060; font-size: 13pt;'>1. Hoạt động 1: Khởi động (Tạo tình huống học tập / Kết nối thực tiễn)</p>
-                    <p><strong>a) Mục tiêu:</strong> Kích thích tư duy, tạo tâm thế hứng thú với các bài toán thực tế.</p>
-                    <p><strong>b) Nội dung:</strong> Học sinh giải quyết bài toán mở đầu có chứa biểu thức số học.</p>
-                    <p><strong>c) Sản phẩm:</strong> Câu trả lời hoặc kết quả tính toán nhanh của học sinh.</p>
-                    <p><strong>d) Tổ chức thực hiện:</strong> GV giao nhiệm vụ, HS thực hiện, báo cáo và GV kết luận dẫn dắt vào bài.</p>
+                    <p><strong>a) Mục tiêu:</strong> Kích thích tư duy, tạo tâm thế hứng thú và kết nối kiến thức cũ với vấn đề mới.</p>
+                    <p><strong>b) Nội dung:</strong> Học sinh tham gia trò chơi tương tác ngắn hoặc quan sát video thực tế liên quan đến ${lessonName}.</p>
+                    <p><strong>c) Sản phẩm:</strong> Câu trả lời nhanh hoặc kết quả minigame của học sinh trên bảng tương tác.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 1: Chuyển giao nhiệm vụ:</em> Giáo viên giao trò chơi Quizizz.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 2: Thực hiện nhiệm vụ:</em> Học sinh thao tác cá nhân.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 3: Báo cáo, thảo luận:</em> Học sinh chia sẻ kết quả nhanh.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 4: Kết luận, nhận định:</em> Giáo viên dẫn dắt vào bài mới.</p>
 
-                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>2. Hoạt động 2: Hình thành kiến thức mới (Khám phá tính chất & Công thức)</p>
-                    <p><strong>a) Mục tiêu:</strong> Lĩnh hội hệ thống định lý và công thức toán học trọng tâm.</p>
-                    <p><strong>b) Nội dung:</strong> Xây dựng các hệ thức tổng quát như <span class="math-formula">S = \\frac{1}{2}ah</span> hoặc các định lý hình học.</p>
-                    <p><strong>c) Sản phẩm:</strong> Phiếu học tập cá nhân và vở ghi chép công thức.</p>
-                    <p><strong>d) Tổ chức thực hiện:</strong> Chuyển giao nhiệm vụ, học sinh thảo luận nhóm khai thác SGK Kết nối tri thức, báo cáo và giáo viên chuẩn hóa hệ thống công thức.</p>
+                    <!-- HOẠT ĐỘNG 2 -->
+                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>2. Hoạt động 2: Hình thành kiến thức mới (Khám phá qua Phân hóa Nhận biết / Thông hiểu & STEM)</p>
+                    <p><strong>a) Mục tiêu:</strong> Chiếm lĩnh các khái niệm, quy luật trọng tâm qua ví dụ phân hóa và nhiệm vụ thực hành.</p>
+                    <p><strong>b) Nội dung:</strong> Khảo sát kiến thức qua 2 mức độ nhận thức:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Mức độ Nhận biết (Ví dụ minh họa):</em> Nhận diện trực quan các dấu hiệu cơ bản qua hình ảnh/mô hình số.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Mức độ Thông hiểu (Ví dụ minh họa):</em> Giải thích bản chất, tính chất hoặc lập luận công thức cơ bản.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Nhiệm vụ giao thực hành (Bài tập tương tự):</em> Học sinh tự làm bài tập tương tự vào phiếu học tập cá nhân.</p>
+                    <p><strong>c) Sản phẩm:</strong> Phiếu học tập số, lời giải bài tập tương tự của học sinh và bản vẽ thiết kế STEM.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 1: Chuyển giao nhiệm vụ:</em> GV phân tích ví dụ mẫu (Nhận biết & Thông hiểu), sau đó giao nhiệm vụ làm bài tập tương tự.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 2: Thực hiện nhiệm vụ:</em> Học sinh thảo luận nhóm đôi, giải quyết ví dụ mẫu rồi tự giải bài tập tương tự.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 3: Báo cáo, thảo luận:</em> Đại diện HS trình bày lời giải bài tập tương tự trên bảng.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Bước 4: Kết luận, nhận định:</em> Giáo viên chuẩn hóa phương pháp giải.</p>
 
-                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>3. Hoạt động 3: Luyện tập (Hệ thống bài tập tính toán)</p>
-                    <p><strong>a) Mục tiêu:</strong> Củng cố kỹ năng vận dụng công thức vào giải bài tập.</p>
-                    <p><strong>b) Nội dung:</strong> Giải các bài tập tính toán từ cơ bản đến nâng cao.</p>
-                    <p><strong>c) Sản phẩm:</strong> Lời giải chi tiết các bài toán trên bảng và vở.</p>
-                    <p><strong>d) Tổ chức thực hiện:</strong> GV giao bài tập, HS làm độc lập, gọi HS lên bảng trình bày bước giải và GV nhận xét.</p>
+                    <!-- HOẠT ĐỘNG 3 -->
+                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>3. Hoạt động 3: Luyện tập (Hệ thống bài tập phân hóa mức độ Thông hiểu)</p>
+                    <p><strong>a) Mục tiêu:</strong> Củng cố kỹ năng vận dụng kiến thức qua hệ thống bài tập tương tự.</p>
+                    <p><strong>b) Nội dung:</strong> Giải quyết các bài tập tính toán/lập luận có cấu trúc tương tự nội dung vừa học.</p>
+                    <p><strong>c) Sản phẩm:</strong> Bài giải hoàn chỉnh trên vở ghi của học sinh.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> GV giao bài tập, HS làm độc lập, chữa bài và phân tích lỗi sai.</p>
 
-                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>4. Hoạt động 4: Vận dụng (Giải quyết bài toán thực tế)</p>
-                    <p><strong>a) Mục tiêu:</strong> Vận dụng công thức vào đời sống thực tiễn.</p>
-                    <p><strong>b) Nội dung:</strong> Bài toán thực tế yêu cầu lập phương trình hoặc tính toán hình học.</p>
-                    <p><strong>c) Sản phẩm:</strong> Báo cáo giải pháp thực tế của học sinh.</p>
-                    <p><strong>d) Tổ chức thực hiện:</strong> Giao bài tập về nhà, đánh giá bằng bảng tiêu chí Rubrics.</p>
+                    <!-- HOẠT ĐỘNG 4 -->
+                    <p style='font-weight: bold; color: #002060; font-size: 13pt; margin-top: 20px;'>4. Hoạt động 4: Vận dụng & Ứng dụng STEM cụ thể</p>
+                    <p><strong>a) Mục tiêu:</strong> Vận dụng kiến thức vào thực tiễn thông qua sản phẩm STEM cụ thể.</p>
+                    <p><strong>b) Nội dung (Ứng dụng STEM cụ thể):</strong> Học sinh thực hiện dự án <em>"Thiết kế và chế tạo mô hình thực tế ứng dụng kiến thức bài học từ vật liệu tái chế"</em> (Ví dụ: Mô hình hình học, mạch điện thông minh, hoặc bản đồ địa lý kinh tế).</p>
+                    <p><strong>c) Sản phẩm:</strong> Mô hình STEM vật lý và báo cáo thuyết trình sản phẩm.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> Giao nhiệm vụ chế tạo ngoài giờ học, đánh giá qua bảng tiêu chí Rubrics.</p>
 
                     <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px; margin-top: 20px;'>IV. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU SỐ</h3>
-                    <p>- Bảng tiêu chí đánh giá Rubrics cho các hoạt động giải toán và sản phẩm học tập.</p>
+                    <p>- Bảng tiêu chí đánh giá Rubrics chi tiết cho mức độ Nhận biết, Thông hiểu và sản phẩm STEM.</p>
                 </body>
                 </html>
             `;
@@ -298,7 +309,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `KHBD_MathType_Lop${grade}_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
+            a.download = `KHBD_CV5512_PhanHoa_STEM_Lop${grade}_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
             document.body.appendChild(a);
             a.click();
             setTimeout(() => {
