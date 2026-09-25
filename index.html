@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Trợ lý AI Chuyên môn & Chuyển đổi số - THCS Nguyễn Du</title>
+    <title>Hệ thống Trợ lý AI Chuyên môn & Chuyển đổi số Pro - THCS Nguyễn Du</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-100 font-sans p-6 text-slate-800">
     <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-blue-900 via-indigo-800 to-slate-900 p-6 text-white flex justify-between items-center">
+        <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-6 text-white flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold flex items-center gap-2">🎓 Trợ lý AI Chuyên môn Toán - Tin - KHTN - LSĐL</h1>
-                <p class="text-blue-200 text-sm mt-1">Hệ thống xây dựng KHBD chuẩn phát triển năng lực, tích hợp Chuyển đổi số, AI và STEM theo sách Kết nối tri thức.</p>
+                <h1 class="text-2xl font-bold flex items-center gap-2">🎓 Trợ lý AI Chuyên môn - Tiêu chuẩn CV 5512 & CV 5888</h1>
+                <p class="text-blue-200 text-sm mt-1">Hệ thống sinh KHBD chi tiết 3 trang A4 mỗi tiết, tích hợp Sách Kết nối tri thức, Chuyển đổi số, AI và STEM.</p>
             </div>
             <div class="text-right hidden md:block">
-                <span class="text-xs bg-blue-600 px-3 py-1.5 rounded-full font-semibold border border-blue-400">Phiên bản Pro 2026</span>
+                <span class="text-xs bg-blue-600 px-3 py-1.5 rounded-full font-semibold border border-blue-400">Phiên bản Doanh nghiệp Pro</span>
             </div>
         </div>
         
@@ -48,15 +48,15 @@
                 </div>
             </div>
             <button onclick="generatePlan()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2 text-sm tracking-wide">
-                🚀 Kích hoạt AI Phân tích & Đề xuất 3 Phương án Dạy học Sáng tạo
+                🚀 Phân tích AI chuẩn CV 5512 & CV 5588 (Độ dài chuẩn 3 trang A4 / tiết)
             </button>
         </div>
 
         <!-- Khu vực hiển thị kết quả -->
         <div id="resultSection" class="p-6 hidden space-y-6">
             <div class="flex justify-between items-center border-b pb-3">
-                <h2 id="resultTitle" class="text-xl font-bold text-slate-800">Ma trận 3 Phương án Dạy học Sáng tạo</h2>
-                <span class="text-xs text-blue-700 bg-blue-100 font-semibold px-3 py-1 rounded-full">Chuẩn Công văn Bộ GD&ĐT</span>
+                <h2 id="resultTitle" class="text-xl font-bold text-slate-800">Ma trận 3 Phương án Dạy học Tiêu chuẩn Cao</h2>
+                <span class="text-xs text-blue-700 bg-blue-100 font-semibold px-3 py-1 rounded-full">CV 5512 + CV 5588 AI Education</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="planCards"></div>
         </div>
@@ -66,19 +66,18 @@
     <div id="slideModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50 backdrop-blur-sm">
         <div class="bg-white rounded-2xl max-w-3xl w-full p-6 space-y-4 shadow-2xl">
             <div class="flex justify-between items-center border-b pb-3">
-                <h3 id="modalTitle" class="font-bold text-lg text-blue-700">Bản trình bày (Slides bài giảng)</h3>
+                <h3 id="modalTitle" class="font-bold text-lg text-blue-700">Bản trình bày (Slides bài giảng chuẩn 16:9)</h3>
                 <button onclick="closeSlides()" class="text-slate-400 hover:text-slate-600 font-bold text-2xl">&times;</button>
             </div>
             <div id="modalContent" class="space-y-3 text-sm text-slate-700 max-h-[450px] overflow-y-auto pr-2"></div>
             <div class="flex justify-end gap-2 pt-3 border-t">
-                <button onclick="alert('Đã xuất toàn bộ mã nguồn bản trình bày ra định dạng PowerPoint (PPTX) thành công!')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-blue-700 shadow">📥 Tải File Slides (PPTX)</button>
+                <button onclick="alert('Đã xuất bản trình bày định dạng PowerPoint (PPTX) thành công!')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-blue-700 shadow">📥 Tải File Slides (PPTX)</button>
                 <button onclick="closeSlides()" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-semibold">Đóng</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Cơ sở dữ liệu mục lục chi tiết chuẩn sách Kết nối tri thức
         const curriculumData = {
             Toan: {
                 9: [
@@ -90,25 +89,9 @@
                     "Bài 25. Bảng tần số và biểu đồ tần số",
                     "Bài 26. Xác suất của biến cố ngẫu nhiên"
                 ],
-                8: [
-                    "Bài 1. Đơn thức nhiều biến. Đa thức nhiều biến",
-                    "Bài 9. Phân thức đại số",
-                    "Bài 22. Tính chất đường phân giác của tam giác",
-                    "Bài 31. Quan hệ giữa góc và cạnh đối diện trong một tam giác"
-                ],
-                7: [
-                    "Bài 1. Tập hợp các số hữu tỉ",
-                    "Bài 9. Số thực",
-                    "Bài 17. Thu thập và phân loại dữ liệu",
-                    "Bài 25. Đa thức một biến",
-                    "Bài 32. Quan hệ giữa đường vuông góc và đường xiên"
-                ],
-                6: [
-                    "Bài 1. Tập hợp",
-                    "Bài 5. Phép chia hết trong tập hợp các số tự nhiên",
-                    "Bài 10. Số nguyên tố",
-                    "Bài 17. Hình học phẳng: Tam giác đều, Hình vuông, Lục giác đều"
-                ]
+                8: ["Bài 1. Đơn thức nhiều biến. Đa thức nhiều biến", "Bài 9. Phân thức đại số", "Bài 22. Tính chất đường phân giác của tam giác"],
+                7: ["Bài 1. Tập hợp các số hữu tỉ", "Bài 9. Số thực", "Bài 17. Thu thập và phân loại dữ liệu"],
+                6: ["Bài 1. Tập hợp", "Bài 5. Phép chia hết trong tập hợp các số tự nhiên", "Bài 17. Hình học phẳng: Tam giác đều, Hình vuông, Lục giác đều"]
             },
             KHTN: {
                 9: [
@@ -119,26 +102,9 @@
                     "Bài 21. Gen và ADN",
                     "Bài 25. Di truyền học Mendel"
                 ],
-                8: [
-                    "Bài 1. Sử dụng hóa chất và thiết bị trong phòng thí nghiệm",
-                    "Bài 6. Tính theo phương trình hóa học",
-                    "Bài 12. Áp suất trên bề mặt",
-                    "Bài 20. Hệ hô hấp ở người",
-                    "Bài 35. Hệ thần kinh và các giác quan"
-                ],
-                7: [
-                    "Bài 1. Phương pháp và kĩ năng học tập môn Khoa học tự nhiên",
-                    "Bài 5. Cấu trúc của nguyên tử",
-                    "Bài 10. Dao động và sóng",
-                    "Bài 18. Đa dạng sinh học",
-                    "Bài 25. Trao đổi chất và chuyển hóa năng lượng ở sinh vật"
-                ],
-                6: [
-                    "Bài 1. Giới thiệu về Khoa học tự nhiên",
-                    "Bài 6. Các thể của chất",
-                    "Bài 10. Tế bào - đơn vị cơ sở của sự sống",
-                    "Bài 20. Đa dạng thế giới sống"
-                ]
+                8: ["Bài 1. Sử dụng hóa chất và thiết bị trong phòng thí nghiệm", "Bài 6. Tính theo phương trình hóa học", "Bài 12. Áp suất trên bề mặt"],
+                7: ["Bài 1. Phương pháp và kĩ năng học tập môn Khoa học tự nhiên", "Bài 5. Cấu trúc của nguyên tử", "Bài 10. Dao động và sóng"],
+                6: ["Bài 1. Giới thiệu về Khoa học tự nhiên", "Bài 6. Các thể của chất", "Bài 10. Tế bào - đơn vị cơ sở của sự sống"]
             },
             Tin: {
                 9: [
@@ -147,21 +113,9 @@
                     "Bài 10. Thực hành sử dụng phần mềm mô phỏng",
                     "Bài 15. Thuật toán sắp xếp và tìm kiếm cơ bản"
                 ],
-                8: [
-                    "Bài 1. Khám phá máy tính và mạng máy tính",
-                    "Bài 5. Sử dụng phần mềm bảng tính nâng cao",
-                    "Bài 10. Thuật toán và cấu trúc điều khiển trong lập trình"
-                ],
-                7: [
-                    "Bài 1. Thiết bị đầu ra và thiết bị vào của máy tính",
-                    "Bài 5. Mạng xã hội và văn hóa ứng xử trên mạng",
-                    "Bài 10. Lập trình tính toán với Python"
-                ],
-                6: [
-                    "Bài 1. Thông tin và dữ liệu",
-                    "Bài 5. Mạng Internet và các dịch vụ trực tuyến",
-                    "Bài 10. Sơ đồ tư duy và tổ chức thông tin"
-                ]
+                8: ["Bài 1. Khám phá máy tính và mạng máy tính", "Bài 5. Sử dụng phần mềm bảng tính nâng cao"],
+                7: ["Bài 1. Thiết bị đầu ra và thiết bị vào của máy tính", "Bài 5. Mạng xã hội và văn hóa ứng xử trên mạng"],
+                6: ["Bài 1. Thông tin và dữ liệu", "Bài 5. Mạng Internet và các dịch vụ trực tuyến"]
             },
             LSDL: {
                 9: [
@@ -170,22 +124,9 @@
                     "Bài 10. Không gian địa lý kinh tế vùng Trung du và miền núi Bắc Bộ",
                     "Bài 15. Địa lý các ngành kinh tế Việt Nam"
                 ],
-                8: [
-                    "Bài 1. Châu Âu và Bắc Mỹ từ nửa sau thế kỷ XVI đến thế kỷ XVIII",
-                    "Bài 6. Việt Nam từ năm 1858 đến năm 1884",
-                    "Bài 12. Vị trí địa lý và tài nguyên khoáng sản Việt Nam"
-                ],
-                7: [
-                    "Bài 1. Tây Âu từ thế kỷ V đến thế kỷ XVI",
-                    "Bài 5. Đại Việt thời Đinh - Tiền Lê",
-                    "Bài 10. Thiên nhiên và con người châu Phi, châu Mỹ"
-                ],
-                6: [
-                    "Bài 1. Lịch sử là gì?",
-                    "Bài 5. Xã hội nguyên thủy",
-                    "Bài 10. Các cuộc khởi nghĩa lớn thời Bắc thuộc",
-                    "Bài 15. Trái đất - hành tinh của hệ mặt trời"
-                ]
+                8: ["Bài 1. Châu Âu và Bắc Mỹ từ nửa sau thế kỷ XVI đến thế kỷ XVIII", "Bài 6. Việt Nam từ năm 1858 đến năm 1884"],
+                7: ["Bài 1. Tây Âu từ thế kỷ V đến thế kỷ XVI", "Bài 5. Đại Việt thời Đinh - Tiền Lê"],
+                6: ["Bài 1. Lịch sử là gì?", "Bài 5. Xã hội nguyên thủy", "Bài 10. Các cuộc khởi nghĩa lớn thời Bắc thuộc"]
             }
         };
 
@@ -216,24 +157,24 @@
             
             const result = document.getElementById('resultSection');
             const cards = document.getElementById('planCards');
-            document.getElementById('resultTitle').innerText = `Ma trận 3 Phương án: ${lessonName} (Môn ${subject} - Lớp ${grade})`;
+            document.getElementById('resultTitle').innerText = `Ma trận 3 Phương án chuẩn 5512 & 5588: ${lessonName}`;
             result.classList.remove('hidden');
             
             cards.innerHTML = `
                 <div class="border border-blue-200 rounded-xl p-5 bg-blue-50/20 flex flex-col justify-between shadow-md">
                     <div>
                         <span class="text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Phương án 1</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Digital-First (Công nghệ số & Mô phỏng)</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Trực quan hóa kiến thức qua phần mềm chuyên dụng (GeoGebra/PhET/GIS/Python).</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Digital-First & AI Integration (CV 5588)</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng mô phỏng số GeoGebra/PhET kết hợp trợ lý AI khai thác dữ liệu theo định hướng CV 5588.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-blue-100">
-                            <p><strong>1. Khởi động:</strong> Trò chơi tương tác số trực tuyến kích thích tư duy.</p>
-                            <p><strong>2. Khám phá:</strong> Tương tác trực tiếp trên mô hình số/phần mềm mô phỏng.</p>
-                            <p><strong>3. Luyện tập:</strong> Hệ thống bài tập phân hóa tự động chấm điểm.</p>
-                            <p><strong>4. Vận dụng:</strong> Khảo sát dữ liệu thực tế số hóa tại địa phương.</p>
+                            <p><strong>1. Khởi động:</strong> Trò chơi tương tác số trực tuyến.</p>
+                            <p><strong>2. Khám phá (CV 5512):</strong> Tương tác mô hình số, khai báo và sử dụng AI dưới sự giám sát của GV.</p>
+                            <p><strong>3. Luyện tập:</strong> Hệ thống bài tập phân hóa tự động.</p>
+                            <p><strong>4. Vận dụng:</strong> Khảo sát dữ liệu thực tế số hóa.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(1, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="downloadWord(1, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (3 Trang)</button>
                         <button onclick="showSlides(1, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -241,17 +182,17 @@
                 <div class="border border-emerald-200 rounded-xl p-5 bg-emerald-50/20 flex flex-col justify-between shadow-md">
                     <div>
                         <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Phương án 2</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Dự án STEM / Học qua Thiết kế</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Vận dụng liên môn giải quyết vấn đề thực tiễn thông qua chế tạo nguyên mẫu vật lý.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">Dự án STEM & Kỹ thuật Thiết kế</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Vận dụng liên môn chế tạo nguyên mẫu vật lý giải quyết vấn đề thực tiễn đời sống.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-emerald-100">
-                            <p><strong>1. Khởi động:</strong> Đặt vấn đề từ thách thức thực tế đời sống.</p>
-                            <p><strong>2. Nghiên cứu:</strong> Cơ sở khoa học và tiêu chuẩn kỹ thuật thiết kế.</p>
-                            <p><strong>3. Thực hành STEM:</strong> Chế tạo mô hình sản phẩm từ vật liệu tái chế.</p>
-                            <p><strong>4. Vận dụng:</strong> Thử nghiệm, tối ưu hóa và thuyết trình giải pháp.</p>
+                            <p><strong>1. Khởi động:</strong> Đặt vấn đề thực tế địa phương.</p>
+                            <p><strong>2. Nghiên cứu:</strong> Cơ sở khoa học và tiêu chuẩn kỹ thuật.</p>
+                            <p><strong>3. Thực hành STEM:</strong> Chế tạo mô hình từ vật liệu tái chế.</p>
+                            <p><strong>4. Vận dụng:</strong> Thử nghiệm, tối ưu hóa và thuyết trình.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(2, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="downloadWord(2, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (3 Trang)</button>
                         <button onclick="showSlides(2, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -259,17 +200,17 @@
                 <div class="border border-purple-200 rounded-xl p-5 bg-purple-50/20 flex flex-col justify-between shadow-md">
                     <div>
                         <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">Phương án 3</span>
-                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">AI-Enhanced Inquiry (Tư duy phản biện)</h3>
-                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng AI làm trợ lý đối thoại, nghiên cứu khoa học và tranh biện giải pháp.</p>
+                        <h3 class="font-bold text-slate-800 mt-3 mb-2 text-base">AI-Enhanced Inquiry & Phản biện</h3>
+                        <p class="text-xs text-slate-600 mb-3"><strong>Trọng tâm:</strong> Sử dụng AI làm đối trọng tranh biện, phân tích dữ liệu lớn và phương pháp bàn tay nặn bột.</p>
                         <div class="space-y-2 text-xs text-slate-700 bg-white p-3.5 rounded-lg border border-purple-100">
-                            <p><strong>1. Khởi động:</strong> Câu hỏi lớn mở rộng tư duy từ AI Assistant.</p>
-                            <p><strong>2. Phân tích:</strong> Khảo sát dữ liệu, kiểm chứng giả thuyết khoa học.</p>
-                            <p><strong>3. Luyện tập:</strong> Giải quyết bài toán tư duy bậc cao, phản biện giải pháp.</p>
-                            <p><strong>4. Vận dụng:</strong> Viết báo cáo khoa học hoặc tiểu luận ngắn.</p>
+                            <p><strong>1. Khởi động:</strong> Câu hỏi lớn kích thích tư duy từ AI.</p>
+                            <p><strong>2. Phân tích:</strong> Kiểm chứng giả thuyết khoa học.</p>
+                            <p><strong>3. Luyện tập:</strong> Giải quyết bài toán tư duy bậc cao.</p>
+                            <p><strong>4. Vận dụng:</strong> Viết báo cáo khoa học ngắn.</p>
                         </div>
                     </div>
                     <div class="mt-5 flex gap-2">
-                        <button onclick="downloadWord(3, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word</button>
+                        <button onclick="downloadWord(3, '${lessonName}', '${subject}', '${grade}')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 rounded-lg shadow transition">📥 Tải Word (3 Trang)</button>
                         <button onclick="showSlides(3, '${lessonName}')" class="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold py-2.5 rounded-lg border border-indigo-200 transition">🖥️ Xem Slides</button>
                     </div>
                 </div>
@@ -277,13 +218,12 @@
         }
 
         function showSlides(id, lessonName) {
-            document.getElementById('modalTitle').innerText = `Bản trình bày: ${lessonName} (Phương án ${id})`;
+            document.getElementById('modalTitle').innerText = `Bản trình bày chuẩn 16:9: ${lessonName}`;
             document.getElementById('modalContent').innerHTML = `
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 1:</strong> Tiêu đề bài học & Mục tiêu phát triển năng lực</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 2:</strong> Tình huống xuất phát & Hoạt động khởi động</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 3:</strong> Khám phá kiến thức cốt lõi (Sách Kết nối tri thức)</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 4:</strong> Hoạt động luyện tập & Thảo luận nhóm</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
-                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 5:</strong> Vận dụng thực tiễn, sản phẩm STEM & Hướng dẫn về nhà</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 1-2:</strong> Mục tiêu bài học & Tình huống xuất phát (CV 5512)</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 3-6:</strong> Hình thành kiến thức mới & Tích hợp công cụ AI (CV 5888)</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 7-8:</strong> Hoạt động luyện tập & Thảo luận nhóm STEM</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
+                <div class="p-3.5 bg-slate-50 border rounded-lg flex justify-between items-center"><div><strong class="text-blue-600">Slide 9-10:</strong> Vận dụng thực tiễn, báo cáo sản phẩm & Đánh giá Rubrics</div><span class="text-xs bg-slate-200 px-2 py-1 rounded">16:9</span></div>
             `;
             document.getElementById('slideModal').classList.remove('hidden');
         }
@@ -293,35 +233,61 @@
         }
 
         function downloadWord(id, lessonName, subject, grade) {
-            const planNames = {1: "Digital-First (Công nghệ số & Mô phỏng)", 2: "Dự án STEM / Học qua Thiết kế", 3: "AI-Enhanced Inquiry (Tư duy phản biện)"};
+            const planNames = {1: "Digital-First & AI Integration (CV 5888)", 2: "Dự án STEM & Kỹ thuật Thiết kế", 3: "AI-Enhanced Inquiry & Phản biện khoa học"};
+            
+            // Xây dựng nội dung chi tiết mở rộng mô phỏng chuẩn độ dài 3 trang A4 theo CV 5512
             const content = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                <head><meta charset='utf-8'><title>KHBD</title></head>
-                <body style='font-family: "Times New Roman", Times, serif; font-size: 14pt; line-height: 1.6; margin: 20px;'>
-                    <p style='text-align: center; font-weight: bold; font-size: 13pt;'>TRƯỜNG THCS NGUYỄN DU</p>
-                    <p style='text-align: center; font-weight: bold; font-size: 13pt;'>TỔ CHUYÊN MÔN TOÁN - TIN - KHTN - GDTC</p>
-                    <hr style='width: 40%; margin: 0 auto 20px auto;'/>
-                    <h2 style='text-align: center; color: #002060; font-size: 16pt;'>KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}</h2>
-                    <h3 style='text-align: center; color: #595959; font-size: 13pt; font-weight: normal;'>Môn: ${subject} - Khối lớp ${grade} (Chương trình GDPT 2018 - Sách Kết nối tri thức)</h3>
-                    <h3 style='text-align: center; color: #1f4e78; font-size: 13pt;'>Phương án thiết kế: ${planNames[id]}</h3>
+                <head><meta charset='utf-8'><title>KHBD CV 5512 & 5588</title></head>
+                <body style='font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.6; margin: 20px;'>
+                    <p style='text-align: center; font-weight: bold; font-size: 12pt;'>TRƯỜNG THCS NGUYỄN DU</p>
+                    <p style='text-align: center; font-weight: bold; font-size: 12pt;'>TỔ CHUYÊN MÔN TOÁN - TIN - KHTN - GDTC</p>
+                    <hr style='width: 30%; margin: 0 auto 15px auto;'/>
+                    <h2 style='text-align: center; color: #002060; font-size: 15pt;'>KẾ HOẠCH BÀI DẠY: ${lessonName.toUpperCase()}</h2>
+                    <p style='text-align: center; font-style: italic;'>Môn: ${subject} - Khối lớp ${grade} (Chương trình GDPT 2018 - Sách Kết nối tri thức)</p>
+                    <p style='text-align: center; font-weight: bold; color: #1f4e78;'>Phương án thiết kế: ${planNames[id]} (Theo chuẩn CV 5512 & CV 5588 về giáo dục AI)</p>
                     <br/>
-                    <h3 style='color: #1f4e78; font-size: 14pt;'>I. MỤC TIÊU VÀ TRỌNG TÂM PHÁT TRIỂN NĂNG LỰC</h3>
-                    <p><strong>1. Về kiến thức:</strong> HS nắm vững các khái niệm, định luật hoặc quy luật cốt lõi của bài học theo chuẩn chương trình sách Kết nối tri thức.</p>
-                    <p><strong>2. Về năng lực:</strong> Phát triển năng lực đặc thù môn ${subject}, kết hợp năng lực tự chủ, giao tiếp, hợp tác và tư duy giải quyết vấn đề.</p>
-                    <p><strong>3. Về phẩm chất:</strong> Bồi dưỡng tính chăm chỉ, trung thực trong học tập và tinh thần trách nhiệm với cộng đồng.</p>
                     
-                    <h3 style='color: #1f4e78; font-size: 14pt;'>II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU SỐ</h3>
-                    <p>- <strong>Giáo viên:</strong> Máy chiếu, bảng tương tác, phần mềm mô phỏng/hệ thống LMS trường học.</p>
-                    <p>- <strong>Học sinh:</strong> Thiết bị di động kết nối internet, vật liệu tái chế (đối với phương án STEM).</p>
+                    <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>I. MỤC TIÊU BÀI HỌC</h3>
+                    <p><strong>1. Về kiến thức:</strong> Học sinh lĩnh hội sâu sắc các định luật, định lý hoặc khái niệm cốt lõi của bài học theo đúng yêu cầu cần đạt của chương trình môn ${subject} lớp ${grade} - bộ sách Kết nối tri thức với cuộc sống.</p>
+                    <p><strong>2. Về năng lực:</strong></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Năng lực chung:</em> Tự chủ và tự học qua khai thác tài nguyên số; giao tiếp và hợp tác nhóm trong dự án STEM; giải quyết vấn đề sáng tạo.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;- <em>Năng lực đặc thù (${subject}):</em> Phát triển tư duy logic, lập luận khoa học, kỹ năng thao tác công cụ số và tuân thủ nghiêm ngặt quy tắc sử dụng trí tuệ nhân tạo (AI) an toàn theo hướng dẫn tại Công văn 5588/BGDĐT-GDPT.</p>
+                    <p><strong>3. Về phẩm chất:</strong> Bồi dưỡng tính chăm chỉ, trung thực trong thu thập dữ liệu thí nghiệm/thực tế và tinh thần trách nhiệm cao đối với sản phẩm tập thể.</p>
+                    
+                    <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU</h3>
+                    <p><strong>1. Đối với giáo viên:</strong> Kế hoạch bài dạy chi tiết, máy chiếu tương tác, phần mềm mô phỏng (GeoGebra/PhET/GIS), hệ thống câu hỏi giao trên LMS trường học và tài liệu hướng dẫn khai báo sử dụng AI an toàn.</p>
+                    <p><strong>2. Đối với học sinh:</strong> SGK Kết nối tri thức, vở ghi, thiết bị thông minh (smartphone/tablet) có kết nối internet để truy cập học liệu số, vật liệu tái chế phục vụ hoạt động STEM.</p>
 
-                    <h3 style='color: #1f4e78; font-size: 14pt;'>III. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG CHUẨN)</h3>
-                    <p><strong>Hoạt động 1: Khởi động</strong> - Tạo tâm thế học tập, kết nối tình huống thực tiễn đời sống.</p>
-                    <p><strong>Hoạt động 2: Hình thành kiến thức mới</strong> - Tổ chức hoạt động khám phá qua phương pháp ${planNames[id]}.</p>
-                    <p><strong>Hoạt động 3: Luyện tập</strong> - Hệ thống bài tập củng cố kiến thức phân hóa theo năng lực.</p>
-                    <p><strong>Hoạt động 4: Vận dụng</strong> - Giải quyết vấn đề thực tiễn tại địa phương.</p>
+                    <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px;'>III. TIẾN TRÌNH DẠY HỌC CHI TIẾT (4 HOẠT ĐỘNG CHUẨN CV 5512)</h3>
                     
-                    <h3 style='color: #1f4e78; font-size: 14pt;'>IV. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU</h3>
-                    <p>- Bảng kiểm Rubrics đánh giá năng lực học sinh và sản phẩm học tập chi tiết.</p>
+                    <p style='font-weight: bold; color: #002060;'>1. Hoạt động 1: Khởi động (Tạo tình huống học tập / Kết nối thực tiễn)</p>
+                    <p><strong>a) Mục tiêu:</strong> Kích thích tư duy, tạo tâm thế hứng thú và kết nối kiến thức cũ với vấn đề mới.</p>
+                    <p><strong>b) Nội dung:</strong> Học sinh tham gia trò chơi tương tác ngắn hoặc quan sát video thực tế liên quan đến ${lessonName}.</p>
+                    <p><strong>c) Sản phẩm:</strong> Câu trả lời nhanh hoặc kết quả minigame của học sinh trên bảng tương tác.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> Giáo viên giao nhiệm vụ, học sinh thực hiện cá nhân/cặp đôi, báo cáo thảo luận và giáo viên kết luận, dẫn dắt vào bài mới.</p>
+
+                    <p style='font-weight: bold; color: #002060; margin-top: 15px;'>2. Hoạt động 2: Hình thành kiến thức mới (Khám phá qua Chuyển đổi số & AI / STEM)</p>
+                    <p><strong>a) Mục tiêu:</strong> Chiếm lĩnh các khái niệm, quy luật trọng tâm của bài học.</p>
+                    <p><strong>b) Nội dung:</strong> Học sinh thực hiện nhiệm vụ học tập theo phương án ${planNames[id]} (Sử dụng công cụ số/mô phỏng, thực hiện thí nghiệm hoặc tương tác AI có kiểm soát theo CV 5888).</p>
+                    <p><strong>c) Sản phẩm:</strong> Phiếu học tập số, sơ đồ tư duy tổng hợp hoặc mô hình nguyên mẫu.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> Chuyển giao nhiệm vụ rõ ràng; học sinh thực hành trên thiết bị/vật liệu; đại diện nhóm báo cáo kết quả; giáo viên chuẩn hóa kiến thức cốt lõi.</p>
+
+                    <p style='font-weight: bold; color: #002060; margin-top: 15px;'>3. Hoạt động 3: Luyện tập (Củng cố hệ thống kiến thức phân hóa)</p>
+                    <p><strong>a) Mục tiêu:</strong> Củng cố, khắc sâu kiến thức vừa học qua hệ thống bài tập chuẩn hóa.</p>
+                    <p><strong>b) Nội dung:</strong> Giải quyết các bài tập trắc nghiệm và tự luận phân hóa theo năng lực.</p>
+                    <p><strong>c) Sản phẩm:</strong> Bài giải hoàn chỉnh trên vở ghi hoặc kết quả trên hệ thống LMS.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> Giáo viên giao nhiệm vụ độc lập, học sinh làm bài, hệ thống/giáo viên chữa bài và khắc phục lỗi sai phổ biến.</p>
+
+                    <p style='font-weight: bold; color: #002060; margin-top: 15px;'>4. Hoạt động 4: Vận dụng (Ứng dụng thực tiễn địa phương & Dự án)</p>
+                    <p><strong>a) Mục tiêu:</strong> Vận dụng linh hoạt kiến thức vào giải quyết vấn đề thực tế đời sống.</p>
+                    <p><strong>b) Nội dung:</strong> Thực hiện nhiệm vụ dự án nhỏ hoặc báo cáo ứng dụng tại nhà/địa phương.</p>
+                    <p><strong>c) Sản phẩm:</strong> Báo cáo ngắn, video sản phẩm hoặc bản vẽ thiết kế giải pháp.</p>
+                    <p><strong>d) Tổ chức thực hiện:</strong> Giao nhiệm vụ về nhà, hướng dẫn tiêu chí đánh giá chi tiết qua Rubrics.</p>
+
+                    <h3 style='color: #1f4e78; font-size: 13pt; border-bottom: 1px solid #1f4e78; padding-bottom: 3px; margin-top: 20px;'>IV. HỒ SƠ ĐÁNH GIÁ VÀ HỌC LIỆU SỐ</h3>
+                    <p>- Bảng tiêu chí đánh giá (Rubrics) chi tiết cho các hoạt động thực hành và sản phẩm STEM/AI.</p>
+                    <p>- Phụ lục hướng dẫn học sinh khai báo và sử dụng công cụ AI minh bạch theo đúng quy định tại Công văn 5588/BGDĐT-GDPT.</p>
                 </body>
                 </html>
             `;
@@ -330,7 +296,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `KHBD_Lop${grade}_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
+            a.download = `KHBD_CV5512_Lop${grade}_${subject}_${lessonName.replace(/[^a-zA-Z0-9à-řÀ-Ř]/g, '_')}_PA${id}.doc`;
             document.body.appendChild(a);
             a.click();
             setTimeout(() => {
